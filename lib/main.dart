@@ -30,6 +30,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   String result = 'GENAP';
+  bool isShow = false;
 
   void _incrementCounter() {
     setState(() {
@@ -53,6 +54,16 @@ class _MyHomePageState extends State<MyHomePage> {
         result = 'GENAP';
       } else {
         result = 'GANJIL';
+      }
+    });
+  }
+
+  void _showButton() {
+    setState(() {
+      if (_counter == 0) {
+        isShow = false;
+      } else {
+        isShow = true;
       }
     });
   }
@@ -94,19 +105,23 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            FloatingActionButton(
-              onPressed: () {
-                _decrementCounter();
-                _checkResult();
-              },
-              tooltip: 'Decrement',
-              child: const Icon(Icons.remove),
-            ),
+            Visibility(
+                visible: isShow,
+                child: FloatingActionButton(
+                  onPressed: () {
+                    _decrementCounter();
+                    _checkResult();
+                    _showButton();
+                  },
+                  tooltip: 'Decrement',
+                  child: const Icon(Icons.remove),
+                )),
             Expanded(child: Container()),
             FloatingActionButton(
               onPressed: () {
                 _incrementCounter();
                 _checkResult();
+                _showButton();
               },
               tooltip: 'Increment',
               child: const Icon(Icons.add),
