@@ -20,6 +20,7 @@ Widget yang saya gunakan pada proyek `counter_7` kali ini adalah :
 - `Expanded` : Widget ini berfungsi untuk memperluas anak dari Row, Column atau flex sehingga mengisi ruang yang tersedia
 - `Container` : Widget ini berfungsi sebagai pembungkus widget lain
 - `FloatingActionButton`: Widget ini berfungsi untuk membuat sebuah tombol
+- `Visibility` : Widget ini berfungsi untuk mengatur kemunculan widget lain
 
 
 ## Apa fungsi dari `setState()`? Jelaskan variabel apa saja yang dapat terdampak dengan fungsi tersebut.
