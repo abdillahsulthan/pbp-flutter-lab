@@ -60,7 +60,7 @@ Widget yang saya gunakan pada proyek `counter_7` kali ini adalah :
 
 - `Navigator.push` merupakan sebuah navigator routing dimana dia akan menambahkan page pada top of stack saja.
 
-- `Navigator.pushReplacement` merupakan sebeuah navigator routing yang akan menghapus page paling atas, lalu menambahkan page yang akan di routing artinya dia mengganti page pada urutan top of stack menjadi page yang baru akan di route (page yang baru akan menjadi top of stack)
+- `Navigator.pushReplacement` merupakan sebuah navigator routing yang akan menghapus page paling atas, lalu menambahkan page yang akan di routing artinya dia mengganti page pada urutan top of stack menjadi page yang baru akan di route (page yang baru akan menjadi top of stack)
 
 ### Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
 
@@ -89,7 +89,7 @@ Widget yang saya gunakan pada proyek `counter_7` kali ini adalah :
 
 ### Jelaskan bagaimana cara kerja `Navigator` dalam "mengganti" halaman dari aplikasi Flutter.
 
-Pada dasarnya Navigator dalam aplikasi Flutter memiliki mekanis pergantian halaman dengan menggunakan prinsip stack. Halaman yang akan dimuat akan di-push pada top of stack, sedangkan jika ingin berpindah ke halaman sebelumnya, Navigator akan melakukan pop pada stack, sehingga page yang saat ini dilihat akan dihapus dari stack dan tampilan pengguna akan berganti ke halaman sebelumnya.
+Pada dasarnya Navigator dalam aplikasi Flutter memiliki mekanisme pergantian halaman dengan menggunakan prinsip stack. Halaman yang akan dimuat akan di-push pada top of stack, sedangkan jika ingin berpindah ke halaman sebelumnya, Navigator akan melakukan pop pada stack, sehingga page yang saat ini dilihat akan dihapus dari stack dan tampilan pengguna akan berganti ke halaman sebelumnya.
 
 ### Jelaskan bagaimana cara kamu mengimplementasikan _checklist_ di atas.
 
