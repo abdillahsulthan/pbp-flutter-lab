@@ -1,5 +1,5 @@
-import 'package:counter_7/data_budget.dart';
-import 'package:counter_7/tambah_budget.dart';
+import 'package:counter_7/view/data_budget.dart';
+import 'package:counter_7/view/tambah_budget.dart';
 import 'package:flutter/material.dart';
 import 'package:counter_7/main.dart';
 

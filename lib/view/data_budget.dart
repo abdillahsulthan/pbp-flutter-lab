@@ -1,5 +1,4 @@
-import 'package:counter_7/navbar.dart';
-import 'package:counter_7/tambah_budget.dart';
+import 'package:counter_7/view/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:counter_7/model/budget.dart';
 

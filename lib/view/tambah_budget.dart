@@ -1,4 +1,4 @@
-import 'package:counter_7/navbar.dart';
+import 'package:counter_7/view/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:counter_7/model/budget.dart';
 
@@ -140,7 +140,17 @@ class _TambahBudgetState extends State<TambahBudget> {
                                       onPressed: () {
                                         Navigator.pop(context);
                                       },
-                                      child: const Text('Kembali'),
+                                      style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStateProperty.all(
+                                                Colors.blue),
+                                      ),
+                                      child: const Text(
+                                        'Kembali',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),
