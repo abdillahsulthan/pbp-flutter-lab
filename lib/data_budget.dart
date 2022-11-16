@@ -1,3 +1,4 @@
+import 'package:counter_7/navbar.dart';
 import 'package:counter_7/tambah_budget.dart';
 import 'package:flutter/material.dart';
 import 'package:counter_7/model/budget.dart';
@@ -16,6 +17,7 @@ class _DataBudgetState extends State<DataBudget> {
       appBar: AppBar(
         title: const Text('Data Budget'),
       ),
+      drawer: const NavbarApp(),
       body: ListView.builder(
         itemBuilder: (context, index) {
           return Card(
@@ -32,13 +34,11 @@ class _DataBudgetState extends State<DataBudget> {
                   style: const TextStyle(
                     fontSize: 14,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold,
                   )),
               trailing: Text(Budget.getList()[index].jenis,
                   style: const TextStyle(
                     fontSize: 14,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold,
                   )),
             ),
           );

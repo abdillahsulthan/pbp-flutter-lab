@@ -1,3 +1,4 @@
+import 'package:counter_7/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:counter_7/model/budget.dart';
 
@@ -21,6 +22,7 @@ class _TambahBudgetState extends State<TambahBudget> {
       appBar: AppBar(
         title: const Text('Form Budget'),
       ),
+      drawer: const NavbarApp(),
       body: Form(
         key: _formKey,
         child: Padding(
@@ -104,9 +106,10 @@ class _TambahBudgetState extends State<TambahBudget> {
                       .toList(),
                 ),
               ),
-              const Padding(padding: EdgeInsets.all(10)),
+              const Padding(padding: EdgeInsets.all(20)),
               SizedBox(
-                width: 70,
+                width: 150,
+                height: 50,
                 child: TextButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.blue),
@@ -145,10 +148,11 @@ class _TambahBudgetState extends State<TambahBudget> {
                             });
                       }
                     },
-                    child: const Text(
-                      "Simpan",
-                      style: TextStyle(color: Colors.white),
-                    )),
+                    child: const Text("Simpan",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ))),
               )
             ],
           ),
