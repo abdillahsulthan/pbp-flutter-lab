@@ -1,4 +1,5 @@
 import 'package:counter_7/view/data_budget.dart';
+import 'package:counter_7/view/mywatchlist_view.dart';
 import 'package:counter_7/view/tambah_budget.dart';
 import 'package:flutter/material.dart';
 import 'package:counter_7/main.dart';
@@ -28,6 +29,11 @@ class NavbarApp extends StatelessWidget {
                 text: 'Data Budget',
                 icon: Icons.data_thresholding_outlined,
                 onClicked: () => selectNavbar(context, 2)),
+            const SizedBox(height: 24),
+            buildNavbar(
+                text: 'My Watchlist',
+                icon: Icons.filter_hdr_rounded,
+                onClicked: () => selectNavbar(context, 3)),
           ],
         ),
       ),
@@ -65,6 +71,9 @@ class NavbarApp extends StatelessWidget {
     } else if (index == 2) {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => const DataBudget()));
+    } else if (index == 3) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const MyWatchlistView()));
     }
   }
 }
