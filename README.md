@@ -70,7 +70,8 @@ Widget yang saya gunakan pada proyek `counter_7` kali ini adalah :
 - `TextStyle` : Widget ini berfungsi untuk memberikan _styling_ pada text misalnya warna
 - `Column` : Widget ini berfungsi untuk mengatur tata letak widget
 - `Container` : Widget ini berfungsi sebagai pembungkus widget lain
-- `ListView.builder` : Widget ini berfungsi untuk menampilkan _list of children_ yang _scrollable_.- - - `DropdownButton`: Widget ini berfungsi sebagai sebuah dropdown 
+- `ListView.builder` : Widget ini berfungsi untuk menampilkan _list of children_ yang _scrollable_.
+- `DropdownButton`: Widget ini berfungsi sebagai sebuah dropdown 
 - `TextFormField` : Widget ini berfungsi sebagai form dari text
 - `SizedBox` : Widget ini berfungsi untuk membuat box, dimana box ini bisa digunakan untuk menambah jarak
 - `Center` : Widget ini berfungsi untuk meletakkan widget didalamnya ke bagian tengah
@@ -100,6 +101,60 @@ Pada dasarnya Navigator dalam aplikasi Flutter memiliki mekanisme pergantian hal
 3. Membuat class Model, class ini memiliki atribut judul, nominal, dan jenis. Class ini juga memiliki list yang bersifat static untuk menampung data budget dari user
 
 4. Class yang dibuat adalah `data_budget.dart` untuk menampilkan data dari list, lalu `tambah_budget.dart` untuk form budget dari user
+
+5. Buat sesuai spesifikasi pada soal...
+
+6. Selesai 🤩
+
+## TUGAS 9
+
+### Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+
+Sebenarnya untuk pengambilan data JSON kita tidak perlu membuat model terlebih dahulu, kita dapat melakukan pengambilan data JSON tersebut dalam bentuk http response dalam bentuk raw data. Namun, untuk kemudahan pengaksesan data dari JSON tersebut, developer disarankan membuat model untuk menampung data JSON tersebut dan mempermudah developer untuk melakukan operasi pada data tersebut.
+
+### Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+
+- `MaterialApp` : adalah sebuah _parent_ dimana yang diapitnya akan menerapkan style _material design_
+- `Scaffold` : Widget ini memiliki peran untuk mengatur struktur _visual layout_ dengan mengimplementasikan material design
+- `Text` : Widget ini berfungsi untuk menampilkan text pada aplikasi
+- `TextStyle` : Widget ini berfungsi untuk memberikan _styling_ pada text misalnya warna
+- `Column` : Widget ini berfungsi untuk mengatur tata letak widget
+- `Row` : Widget ini berfungsi untuk mengatur tata letak widget
+- `Container` : Widget ini berfungsi sebagai pembungkus widget lain
+- `ListView.builder` : Widget ini berfungsi untuk menampilkan _list of children_ yang _scrollable_
+- `SizedBox` : Widget ini berfungsi untuk membuat box, dimana box ini bisa digunakan untuk menambah jarak
+- `Center` : Widget ini berfungsi untuk meletakkan widget didalamnya ke bagian tengah
+- `Card` : Widget ini berfungsi untuk menampilkan card
+- `FloatingActionButton`: Widget ini berfungsi untuk membuat sebuah tombol
+- `Expanded` : Widget ini berfungsi untuk memperluas anak dari Row, Column atau flex sehingga mengisi ruang yang tersedia
+- `Padding` : Widget ini berfungsi untuk mengatur padding dari widget lainnya
+- `BorderSide` : Widget ini berfungsi untuk memberikan border
+- `RoundedRectangleBorder` : Widget ini berfungsi untuk memberi bentuk rounded pada box
+- `ListTile` : Widget ini berfungsi untuk memberi bentuk list di widget dalamnya.
+- `CheckBoxListTile` : Widget ini berfungsi untuk menampilkan checkbox.
+- `FutureBuilder` : Widget ini berfungsi untuk fetching data
+
+### Jelaskan mekanisme pengambilan data dari json hingga dapat ditampilkan pada Flutter.
+
+1. Membuat class model untuk mendefinisikan data dari JSON
+
+2. Membuat method untuk melakukan fetch data dari website json tugas 3 dengan http, dimana method ini di refactor menjadi file baru
+
+4. Response dari http akan diubah menjadi object Dart dan dimasukkan kedalam list
+
+3. Untuk mendisplay data tersebut, data dapat memanfaatkan `FutureWidget`, dimana widget ini digunakan karena result dari server menggunakan Future yang memberikan delay dalam pengambilan data
+
+6. Melakukan iterasi terhadap data yang ada, untuk menampilkan data
+
+### Jelaskan bagaimana cara kamu mengimplementasikan _checklist_ di atas.
+
+1. Membuat class `watchlist.dart` dimana class ini akan menjadi model dari untuk page watchlist dan menampung data json
+
+2. Menambahkan page route drawer untuk di route ke view MyWatchlist 
+
+3. Membuat method untuk melakukan fetch data dari website json tugas 3 dengan http, dimana method ini di refactor menjadi file baru
+
+4. Membuat page view dari mywatchlist yaitu untuk menampilkan list movie dan page detail untuk menampilkan movie detail
 
 5. Buat sesuai spesifikasi pada soal...
 
