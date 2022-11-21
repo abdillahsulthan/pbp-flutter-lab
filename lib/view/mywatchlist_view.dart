@@ -1,9 +1,8 @@
-import 'dart:convert';
 import 'package:counter_7/model/watchlist.dart';
 import 'package:counter_7/view/navbar.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:counter_7/view/detail_movie.dart';
+import 'package:counter_7/data/data_watchlist.dart';
 
 class MyWatchlistView extends StatefulWidget {
   const MyWatchlistView({super.key});
@@ -13,18 +12,30 @@ class MyWatchlistView extends StatefulWidget {
 }
 
 class _MyWatchlistViewState extends State<MyWatchlistView> {
-  Future<List<Watchlist>> fetchWatchlist() async {
-    var url = 'https://webnyakatabtugas2.herokuapp.com/mywatchlist/json/';
-    List<Watchlist> watchlist = [];
-    var response = await http.get(Uri.parse(url));
-    if (response.statusCode == 200) {
-      var watchlistJson = json.decode(response.body);
-      for (var movie in watchlistJson) {
-        watchlist.add(Watchlist.fromJson(movie));
-      }
+  late DataWatchlist dataMovie;
+  late Future<List<Watchlist>> _watchlist;
+
+  Color colorWatched(Watched status) {
+    if (status == Watched.belum) {
+      return Colors.red;
+    } else {
+      return Colors.green;
     }
-    Watchlist.movieList.addAll(watchlist);
-    return watchlist;
+  }
+
+  bool checkStatusWatched(Watched status) {
+    if (status == Watched.belum) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  @override
+  void initState() {
+    dataMovie = DataWatchlist();
+    _watchlist = dataMovie.fetchWatchlist();
+    super.initState();
   }
 
   @override
@@ -35,7 +46,7 @@ class _MyWatchlistViewState extends State<MyWatchlistView> {
         ),
         drawer: const NavbarApp(),
         body: FutureBuilder(
-            future: fetchWatchlist(),
+            future: _watchlist,
             builder: (context, AsyncSnapshot snapshot) {
               if (snapshot.data == null) {
                 return const Center(child: CircularProgressIndicator());
@@ -53,41 +64,60 @@ class _MyWatchlistViewState extends State<MyWatchlistView> {
                   );
                 } else {
                   return ListView.builder(
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (_, index) => Container(
-                            margin: const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 12),
-                            padding: const EdgeInsets.all(20.0),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10.0),
-                                boxShadow: const [
-                                  BoxShadow(
-                                      color: Colors.black, blurRadius: 2.0)
-                                ]),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                ListTile(
-                                  title: Text(
-                                    "${snapshot.data![index].fields.title}",
+                    itemBuilder: (context, index) {
+                      Watchlist movie = snapshot.data[index];
+                      return Card(
+                          shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                  color: colorWatched(movie.fields.watched)),
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 32, bottom: 32, left: 16, right: 16),
+                            child: ListTile(
+                                title: Text(movie.fields.title,
                                     style: const TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                DetailMovie(index: index)));
-                                  },
-                                )
-                              ],
-                            ),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold)),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => DetailMovie(
+                                                index: index,
+                                                movie: snapshot.data[index],
+                                              )));
+                                },
+                                trailing: SizedBox(
+                                    height: 80,
+                                    width: 80,
+                                    child: Row(children: [
+                                      Expanded(
+                                          child: CheckboxListTile(
+                                        value: checkStatusWatched(
+                                            movie.fields.watched),
+                                        onChanged: (newValue) {
+                                          setState(() {
+                                            if (movie.fields.watched ==
+                                                Watched.sudah) {
+                                              movie.fields.watched =
+                                                  Watched.belum;
+                                              colorWatched(Watched.belum);
+                                            } else {
+                                              movie.fields.watched =
+                                                  Watched.sudah;
+                                              colorWatched(Watched.sudah);
+                                            }
+                                          });
+                                        },
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                      )),
+                                    ]))),
                           ));
+                    },
+                    itemCount: snapshot.data.length,
+                  );
                 }
               }
             }));

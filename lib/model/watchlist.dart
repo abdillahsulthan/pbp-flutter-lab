@@ -16,7 +16,6 @@ class Watchlist {
   Model model;
   int pk;
   Fields fields;
-  static List<Watchlist> movieList = [];
 
   factory Watchlist.fromJson(Map<String, dynamic> json) => Watchlist(
         model: modelValues.map[json["model"]]!,
@@ -45,6 +44,8 @@ class Fields {
   int rating;
   String releaseDate;
   String review;
+
+
 
   factory Fields.fromJson(Map<String, dynamic> json) => Fields(
         watched: watchedValues.map[json["watched"]]!,

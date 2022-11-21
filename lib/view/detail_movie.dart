@@ -5,8 +5,9 @@ import 'package:counter_7/view/mywatchlist_view.dart';
 
 class DetailMovie extends StatelessWidget {
   final int index;
+  final Watchlist movie;
 
-  const DetailMovie({super.key, required this.index});
+  const DetailMovie({super.key, required this.index, required this.movie});
 
   String checkStatus(Watched status) {
     if (status == Watched.belum) {
@@ -28,7 +29,7 @@ class DetailMovie extends StatelessWidget {
         children: <Widget>[
           const Padding(padding: EdgeInsets.only(top: 10, bottom: 10)),
           Center(
-            child: Text(Watchlist.movieList[index].fields.title,
+            child: Text(movie.fields.title,
                 style:
                     const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           ),
@@ -39,7 +40,7 @@ class DetailMovie extends StatelessWidget {
                 const Text("Release Date: ",
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                Text(Watchlist.movieList[index].fields.releaseDate,
+                Text(movie.fields.releaseDate,
                     style: const TextStyle(fontSize: 20)),
               ],
             ),
@@ -51,7 +52,7 @@ class DetailMovie extends StatelessWidget {
                 const Text("Rating: ",
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                Text(Watchlist.movieList[index].fields.rating.toString(),
+                Text(movie.fields.rating.toString(),
                     style: const TextStyle(fontSize: 20)),
                 const Text("/5", style: TextStyle(fontSize: 20)),
               ],
@@ -64,7 +65,7 @@ class DetailMovie extends StatelessWidget {
                 const Text("Status: ",
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                Text(checkStatus(Watchlist.movieList[index].fields.watched),
+                Text(checkStatus(movie.fields.watched),
                     style: const TextStyle(fontSize: 20)),
               ],
             ),
@@ -76,8 +77,8 @@ class DetailMovie extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10),
-            child: Text(Watchlist.movieList[index].fields.review,
-                style: const TextStyle(fontSize: 20)),
+            child:
+                Text(movie.fields.review, style: const TextStyle(fontSize: 20)),
           ),
         ],
       ),
@@ -87,10 +88,7 @@ class DetailMovie extends StatelessWidget {
         margin: const EdgeInsets.all(10),
         child: ElevatedButton(
           onPressed: () {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const MyWatchlistView()));
+            Navigator.pop(context);
           },
           child: const Center(
             child: Text('Back'),
